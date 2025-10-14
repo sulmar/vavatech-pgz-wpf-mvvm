@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfApp.DockPanelView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="DockPanelView" Height="450" Width="800">
+
+    <DockPanel>
+        <Button Background="Aqua" DockPanel.Dock="Left">Left</Button>
+        <Button Background="Red" DockPanel.Dock="Right" >Hello 3</Button>
+
+        <Button Background="Blue" DockPanel.Dock="Top" Height="100" >Hello 1</Button>
+        <Button Background="Orange" DockPanel.Dock="Top" >Hello 4</Button>
+        <Button Background="Green" DockPanel.Dock="Bottom" >Hello 2</Button>
+
+        <Button Background="Yellow" />
+    </DockPanel>
+
+
+</Window>
