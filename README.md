@@ -102,35 +102,125 @@ Sekcja `Fundamentals` zawiera stopniowe wprowadzenie do technologii WPF i wzorca
 
 **Lokalizacja:** `src/RealWorld/`
 
-**Opis:** Praktyczny przykład kompletnej aplikacji biznesowej demonstrującej zastosowanie wszystkich poznanych koncepcji w rzeczywistym projekcie.
+**Opis:** Praktyczny przykład kompletnej aplikacji biznesowej demonstrującej zastosowanie wszystkich poznanych koncepcji w rzeczywistym projekcie. Aplikacja implementuje zaawansowaną architekturę z podziałem na warstwy (Domain, Infrastructure, ViewModels, WpfApp).
 
-### MyApp - Aplikacja biznesowa
+### Architektura aplikacji
+Aplikacja RealWorld wykorzystuje **Clean Architecture** z podziałem na warstwy:
+
+```
+RealWorld/
+├── Domain/                     # Warstwa domenowa
+├── Infrastructure/             # Warstwa infrastruktury  
+├── ViewModels/                # Warstwa ViewModels
+├── WpfApp/                    # Warstwa prezentacji
+└── MyApp.sln                  # Solution file
+```
+
+### Domain - Warstwa domenowa
+**Lokalizacja:** `src/RealWorld/Domain/`
+
+**Opis:** Zawiera modele biznesowe i abstrakcje (interfejsy) aplikacji.
+
+**Kluczowe komponenty:**
+- **Modele biznesowe:**
+  - `Customer.cs` - Model klienta z adresami
+  - `Region.cs` - Model regionu
+  - `Address.cs` - Model adresu
+  - `BaseEntity.cs` - Klasa bazowa dla encji
+- **Modele czujników:**
+  - `Sensor.cs` - Klasa bazowa czujnika
+  - `TemperatureSensor.cs` - Czujnik temperatury
+  - `Gyroscope.cs` - Żyroskop
+- **Abstrakcje:**
+  - `ISensorService.cs` - Interfejs serwisu czujników
+  - `IRegionService.cs` - Interfejs serwisu regionów
+
+**Kluczowe cechy:**
+- Czysta warstwa domenowa bez zależności
+- Abstrakcje dla serwisów
+- Hierarchia dziedziczenia dla czujników
+- Wzorce projektowe (Base Entity, Repository)
+
+### Infrastructure - Warstwa infrastruktury
+**Lokalizacja:** `src/RealWorld/Infrastructure/`
+
+**Opis:** Implementuje interfejsy z warstwy Domain, dostarczając konkretne implementacje serwisów.
+
+**Kluczowe komponenty:**
+- `FakeSensorService.cs` - Implementacja ISensorService z danymi testowymi
+- `DbSensorService.cs` - Implementacja ISensorService dla bazy danych
+- `FakeRegionService.cs` - Implementacja IRegionService z danymi testowymi
+
+**Kluczowe cechy:**
+- Implementacja wzorca Repository
+- Dane testowe dla rozwoju
+- Przygotowanie do integracji z bazą danych
+- Dependency Injection ready
+
+### ViewModels - Warstwa ViewModels
+**Lokalizacja:** `src/RealWorld/ViewModels/`
+
+**Opis:** Zawiera ViewModels implementujące wzorzec MVVM z logiką biznesową dla interfejsu użytkownika.
+
+**Kluczowe komponenty:**
+- `BaseViewModel.cs` - Klasa bazowa dla wszystkich ViewModels
+- `ItemsViewModel<T>.cs` - Generyczny ViewModel dla kolekcji
+- `CustomersViewModel.cs` - ViewModel dla zarządzania klientami
+- `SensorsViewModel.cs` - ViewModel dla zarządzania czujnikami
+- `RegionsViewModel.cs` - ViewModel dla zarządzania regionami
+
+**Kluczowe cechy:**
+- Generyczne ViewModels dla różnych typów danych
+- Dependency Injection dla serwisów
+- Implementacja wzorca MVVM
+- Testowalna logika biznesowa
+
+### WpfApp - Aplikacja biznesowa
 **Lokalizacja:** `src/RealWorld/WpfApp/`
 
 **Funkcjonalności:**
 - Zarządzanie klientami (Customers)
+- Zarządzanie czujnikami (Sensors) z wizualizacją na mapie
+- Zarządzanie regionami (Regions) z czujnikami
 - Nowoczesny interfejs użytkownika
 - Wzorzec MVVM w praktyce
 - Style i zasoby globalne
 - Nawigacja między widokami
+- Custom Controls
 
 **Struktura aplikacji:**
 ```
 WpfApp/
 ├── Views/
 │   ├── ShellView.xaml          # Główny kontener aplikacji
-│   └── CustomersView.xaml      # Widok zarządzania klientami
+│   ├── CustomersView.xaml      # Widok zarządzania klientami
+│   ├── SensorsView.xaml        # Widok zarządzania czujnikami
+│   ├── MapSensorsView.xaml     # Widok mapy czujników
+│   └── RegionsView.xaml        # Widok zarządzania regionami
+├── CustomControls/
+│   └── MapSensors.xaml         # Custom Control do wizualizacji czujników
 ├── Resources/
+│   ├── Colors.xaml             # Definicje kolorów
 │   └── Styles.xaml             # Globalne style aplikacji
+├── ViewModelLocator.cs         # Locator dla Dependency Injection
 ├── App.xaml                    # Konfiguracja aplikacji
 └── WpfApp.csproj              # Konfiguracja projektu
 ```
+
+**Funkcjonalności:**
+- **Wizualizacja czujników na mapie** - Custom Control MapSensors
+- **Zarządzanie pozycją czujników** - Slidery do ustawiania X/Y
+- **Grupowanie czujników w regiony** - Hierarchiczna organizacja
+- **Zaawansowane style** - Spójny design system
+- **Dependency Injection** - Microsoft.Extensions.DependencyInjection
 
 **Kluczowe cechy:**
 - Wykorzystanie wzorca MVVM
 - Separacja logiki biznesowej od interfejsu
 - Testowalna architektura
 - Nowoczesne style i UX
+- Custom Controls
+- Wizualizacja danych na mapie
 
 ## Przygotowanie środowiska
 
@@ -160,9 +250,30 @@ dotnet run
 cd ../../03_Layouts/WpfApp
 dotnet run
 
-# Aplikacja biznesowa
+# Aplikacja biznesowa (RealWorld)
 cd ../../RealWorld/WpfApp
 dotnet run
+```
+
+### 4. Uruchom poszczególne warstwy RealWorld
+```bash
+# Zbuduj całe rozwiązanie RealWorld
+cd src/RealWorld
+dotnet build
+
+# Uruchom aplikację WpfApp (główna aplikacja)
+cd WpfApp
+dotnet run
+
+# Testuj poszczególne warstwy
+cd ../Domain
+dotnet test  # jeśli są testy
+
+cd ../Infrastructure  
+dotnet test  # jeśli są testy
+
+cd ../ViewModels
+dotnet test  # jeśli są testy
 ```
 
 ## Ścieżka nauki
@@ -183,9 +294,27 @@ dotnet run
 3. Połącz różne panele w złożone układy
 
 ### Etap 4: Praktyka (RealWorld)
-1. Przeanalizuj architekturę aplikacji biznesowej
-2. Zrozum implementację wzorca MVVM
-3. Naucz się tworzyć skalowalne aplikacje
+1. **Architektura aplikacji:**
+   - Przeanalizuj podział na warstwy (Domain, Infrastructure, ViewModels, WpfApp)
+   - Zrozum zasady Clean Architecture
+   - Naucz się Dependency Injection
+2. **Warstwa Domain:**
+   - Przeanalizuj modele biznesowe (Customer, Region, Sensor)
+   - Zrozum hierarchię dziedziczenia czujników
+   - Naucz się definiować abstrakcje (interfejsy)
+3. **Warstwa Infrastructure:**
+   - Zrozum implementację wzorca Repository
+   - Naucz się tworzyć serwisy z danymi testowymi
+   - Przygotuj się do integracji z bazą danych
+4. **Warstwa ViewModels:**
+   - Przeanalizuj generyczne ViewModels
+   - Zrozum implementację wzorca MVVM
+   - Naucz się Dependency Injection w ViewModels
+5. **Aplikacja WpfApp:**
+   - Przeanalizuj zaawansowane widoki (Sensors, Regions, MapSensors)
+   - Naucz się tworzyć Custom Controls
+   - Zrozum wizualizację danych na mapie
+   - Naucz się tworzyć skalowalne aplikacje
 
 ## Wsparcie
 
