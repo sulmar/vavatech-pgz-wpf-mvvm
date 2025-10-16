@@ -12,7 +12,13 @@
       Title="SensorsView">
 
     <Grid>
-        <ListBox ItemsSource="{Binding Sensors}" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        
+        <ListBox ItemsSource="{Binding Sensors}" SelectedItem="{Binding SelectedSensor}" >
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -31,5 +37,21 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
+
+        <StackPanel Grid.Column="1" >
+            <Label>Name</Label>
+            <TextBox Text="{Binding SelectedSensor.Name}" />
+
+            <Label>Ip</Label>
+            <TextBox Text="{Binding SelectedSensor.IpAddress}" />
+
+            <Label>X</Label>
+            <Slider Value="{Binding SelectedSensor.X}" />
+
+            <Label>Y</Label>
+            <Slider Value="{Binding SelectedSensor.Y}" />
+            
+            
+        </StackPanel>
     </Grid>
 </Page>

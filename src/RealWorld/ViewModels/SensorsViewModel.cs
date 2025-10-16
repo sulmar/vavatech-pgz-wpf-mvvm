@@ -7,6 +7,8 @@ public class SensorsViewModel : ItemsViewModel<Sensor>
 {
     public List<Sensor> Sensors => Items;
 
+    public Sensor SelectedSensor { get; set; }
+
     public SensorsViewModel(ISensorService service)
     {
         Items = service.GetAll();
