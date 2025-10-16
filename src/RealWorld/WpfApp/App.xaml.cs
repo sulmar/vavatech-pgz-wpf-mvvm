@@ -28,6 +28,9 @@ public partial class App : Application
         services.AddTransient<SensorsViewModel>();
         services.AddTransient<ISensorService, FakeSensorService>();
 
+        services.AddTransient<RegionsViewModel>();
+        services.AddTransient<IRegionService, FakeRegionService>();
+
         ServiceProvider = services.BuildServiceProvider();
 
         

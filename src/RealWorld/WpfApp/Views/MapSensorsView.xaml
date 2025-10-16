@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp.Views"
+      xmlns:uc="clr-namespace:WpfApp.CustomControls"
       DataContext="{Binding SensorsViewModel, Source={StaticResource Locator}}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -11,33 +12,8 @@
 
     <Grid>
 
-        <ListBox ItemsSource="{Binding Sensors}" >
+        <uc:MapSensors ItemsSource="{Binding Sensors}" />
 
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Canvas />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Ellipse Width="20" Height="20" Fill="Orange" />
-                        <Label Content="{Binding Name}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Canvas.Left" Value="{Binding X}" />
-                    <Setter Property="Canvas.Top" Value="{Binding Y}" />
-                </Style>
-            </ListBox.ItemContainerStyle>
-
-           
-
-        </ListBox>
 
     </Grid>
 </Page>

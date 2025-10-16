@@ -11,4 +11,5 @@ namespace WpfApp;
 public class ViewModelLocator
 {
     public SensorsViewModel SensorsViewModel => App.Current.ServiceProvider.GetRequiredService<SensorsViewModel>();
+    public RegionsViewModel RegionsViewModel => App.Current.ServiceProvider.GetRequiredService<RegionsViewModel>();
 }

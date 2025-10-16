@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp.Views"
       xmlns:vm="clr-namespace:ViewModels;assembly=ViewModels"
+      xmlns:uc="clr-namespace:WpfApp.CustomControls"
       DataContext="{Binding SensorsViewModel, Source={StaticResource Locator}}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -25,8 +26,6 @@
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Name}" Width="200" />
                         <Label Content="{Binding IpAddress}" />
-                        <Label Content="{Binding X}" />
-                        <Label Content="{Binding Y}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
