@@ -15,7 +15,7 @@
 
     <Grid>
 
-        <ListBox ItemsSource="{Binding Sensors}" />
+        <ListBox ItemsSource="{Binding Sensors}" DisplayMemberPath="FullName" />
 
     </Grid>
 </Page>
