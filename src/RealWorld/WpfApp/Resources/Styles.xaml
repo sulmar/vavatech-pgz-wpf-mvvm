@@ -12,10 +12,11 @@
         <Setter Property="Foreground" Value="{StaticResource TextColorBrush}"/>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}" />
+    <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}"  />
 
     <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
         <Setter Property="Background" Value="{StaticResource DangerColorBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource AlertTextColorBrush}" />
         <Setter Property="Width" Value="100" />
     </Style>
 
