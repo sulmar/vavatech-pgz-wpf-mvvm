@@ -17,7 +17,7 @@
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
             </StackPanel>
 
-            <Frame Source="CustomersView.xaml" />
+            <Frame Source="SensorsView.xaml" />
         </DockPanel>
 
 
