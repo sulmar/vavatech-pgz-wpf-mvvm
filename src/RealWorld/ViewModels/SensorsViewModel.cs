@@ -1,34 +1,21 @@
-﻿using Domain.Models;
-using Domain.Models.Sensors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models.Sensors;
 
 namespace ViewModels;
-
-public abstract class BaseViewModel
-{
-
-}
-
-// Szablon (klasa generyczna)
-public class ItemsViewModel<T> : BaseViewModel
-        where T : Base
-{
-    public List<T> Items { get; set; }
-}
-
-
 
 public class SensorsViewModel : ItemsViewModel<Sensor>
 {
     public List<Sensor> Sensors => Items;
-}
 
-
-public class CustomersViewModel : ItemsViewModel<Customer>
-{
+    public SensorsViewModel()
+    {
+        Items = new List<Sensor>
+        {
+            new TemperatureSensor { Id = 1, IpAddress = "192.168.0.1", Name = "Czujnik temp. #1"},
+            new TemperatureSensor { Id = 2, IpAddress = "192.168.0.2", Name = "Czujnik temp. #2"},
+            new TemperatureSensor { Id = 3, IpAddress = "192.168.0.3", Name = "Czujnik temp. #3"},
+            new Gyroscope { Id = 4, IpAddress = "192.168.0.4", Name = "Zyroskop #1" },
+            new Gyroscope { Id = 5, IpAddress = "192.168.0.5", Name = "Zyroskop #2" }
+        };
+    }
 }
 
