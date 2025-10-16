@@ -27,9 +27,7 @@ namespace WpfApp.Views
         public SensorsView()
         {
             InitializeComponent();
-
-            // this.DataContext = new SensorsViewModel(new FakeSensorService());
-
+            
             this.DataContext = App.Current.ServiceProvider.GetRequiredService<SensorsViewModel>();
         }
     }

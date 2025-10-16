@@ -26,7 +26,7 @@ public partial class App : Application
         var services = new ServiceCollection();
 
         services.AddTransient<SensorsViewModel>();
-        services.AddTransient<ISensorService, FakeSensorService>();
+        services.AddTransient<ISensorService, BFakeSensorService>();
 
         ServiceProvider = services.BuildServiceProvider();
 
