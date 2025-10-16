@@ -1,4 +1,5 @@
 ﻿using Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,7 @@ namespace WpfApp.Views
         {
             InitializeComponent();
 
-
-            this.DataContext = new SensorsViewModel(new FakeSensorService());
+            this.DataContext = App.Current.ServiceProvider.GetRequiredService<SensorsViewModel>();
         }
     }
 }
