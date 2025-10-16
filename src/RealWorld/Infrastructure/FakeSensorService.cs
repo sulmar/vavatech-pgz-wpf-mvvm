@@ -17,12 +17,3 @@ public class FakeSensorService : ISensorService
         };
     }
 }
-
-
-public class DbSensorService : ISensorService
-{
-    public List<Sensor> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-}
