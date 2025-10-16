@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace WpfApp.Views
         {
             InitializeComponent();
 
-          //  this.DataContext = new SensorsViewModel();
+            this.DataContext = new SensorsViewModel(new FakeSensorService());
         }
     }
 }

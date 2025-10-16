@@ -23,6 +23,9 @@
 
         <ProgressBar Height="50" Width="150" Value="50" IsIndeterminate="True" Visibility="Hidden"  />
 
+        
+
+
     </Grid>
 
 </Window>
