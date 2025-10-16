@@ -11,6 +11,26 @@
       Title="SensorsView">
 
     <Grid>
-        <ListBox ItemsSource="{Binding Sensors}" DisplayMemberPath="FullName" />
+        <ListBox ItemsSource="{Binding Sensors}" >
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2" />
+                    <!--<StackPanel />-->
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Name}" Width="200" />
+                        <Label Content="{Binding IpAddress}" />
+                        <Label Content="{Binding X}" />
+                        <Label Content="{Binding Y}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
     </Grid>
 </Page>
