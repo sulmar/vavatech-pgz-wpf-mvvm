@@ -26,8 +26,6 @@ namespace WpfApp.Views
         public MapSensorsView()
         {
             InitializeComponent();
-
-            this.DataContext = App.Current.ServiceProvider.GetRequiredService<SensorsViewModel>();
         }
     }
 }
