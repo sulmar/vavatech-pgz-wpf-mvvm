@@ -12,6 +12,8 @@ public class SensorsViewModel : ItemsViewModel<Sensor>
     public SensorsViewModel(ISensorService service)
     {
         Items = service.GetAll();
+
+        SelectedSensor = Items.FirstOrDefault();
     }
 }
 
