@@ -36,7 +36,7 @@
 
             </DockPanel>
 
-            <Frame Source="SensorsView.xaml" />
+            <Frame x:Name="MainFrame" Source="SensorsView.xaml" />
         </DockPanel>
 
 

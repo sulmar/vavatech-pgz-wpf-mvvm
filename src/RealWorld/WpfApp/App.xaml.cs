@@ -5,6 +5,9 @@ using System.Configuration;
 using System.Data;
 using System.Windows;
 using ViewModels;
+using ViewModels.Services;
+using WpfApp.Services;
+using WpfApp.Views;
 
 namespace WpfApp;
 
@@ -25,6 +28,10 @@ public partial class App : Application
 
         var services = new ServiceCollection();
 
+
+        services.AddTransient<MapSensorsView>();
+        services.AddTransient<SensorsView>();
+
         services.AddTransient<SensorsViewModel>();
         services.AddTransient<ISensorService, FakeSensorService>();
 
@@ -32,6 +39,7 @@ public partial class App : Application
         services.AddTransient<IRegionService, FakeRegionService>();
 
         services.AddSingleton<ShellViewModel>();
+        services.AddSingleton<INavigationService, FrameNavigationService>();
 
         ServiceProvider = services.BuildServiceProvider();
 

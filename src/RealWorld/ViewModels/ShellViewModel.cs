@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ViewModels.Commands;
+using ViewModels.Services;
 
 namespace ViewModels;
 
@@ -12,8 +13,12 @@ namespace ViewModels;
 // Install-Package Microsoft.Xaml.Behaviors.Wpf
 public class ShellViewModel : BaseViewModel
 {
-    public ShellViewModel()
+    private readonly INavigationService navigationService;
+
+    public ShellViewModel(INavigationService navigationService)
     {
+        this.navigationService = navigationService;
+
         ShowMapCommand = new RelayCommand(ShowMapSensors, CanShowMapSensors);
         ShowSensorsCommand = new RelayCommand(ShowSensors);
         ShowLogoCommand = new RelayCommand(ShowLogo);
@@ -23,9 +28,12 @@ public class ShellViewModel : BaseViewModel
     public ICommand ShowSensorsCommand { get; private set; }
     public ICommand ShowLogoCommand { get; set; }
 
+
     public void ShowMapSensors()
     {
         Console.WriteLine("Show map sensors!");
+
+        navigationService.NavigateTo("MapSensorsView");
     }
 
     public bool CanShowMapSensors()
@@ -36,6 +44,8 @@ public class ShellViewModel : BaseViewModel
     public void ShowSensors()
     {
         Console.WriteLine("Show sensors!");
+
+        navigationService.NavigateTo("SensorsView");
     }
 
 
