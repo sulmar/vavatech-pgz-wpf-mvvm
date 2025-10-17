@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:WpfApp"
+        xmlns:me="clr-namespace:WpfApp.MarkupExtensions"
         DataContext="{Binding Source={StaticResource Locator}, Path=ShellViewModel}"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
@@ -17,13 +18,22 @@
                 <Button Command="{Binding ShowMapCommand}" >Map</Button>
                 <Button Command="{Binding ShowSensorsCommand}">Sensors</Button>
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
-                <Border BorderBrush="Black" BorderThickness="1" Margin="5" >
+
+                <TextBlock Text="{me:Hello Text='John Smith'}" />
+                
+                <Border Width="50" BorderBrush="Black" BorderThickness="1" Margin="5" >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseEnter">
                             <i:InvokeCommandAction Command="{Binding ShowLogoCommand}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Border>
+
+                <!--<Border BorderBrush="Green" BorderThickness="1" Margin="5"
+                        MouseEnter="{me:EventToCommand ShowLogoCommand}"
+                        />-->
+
+
             </DockPanel>
 
             <Frame Source="SensorsView.xaml" />
