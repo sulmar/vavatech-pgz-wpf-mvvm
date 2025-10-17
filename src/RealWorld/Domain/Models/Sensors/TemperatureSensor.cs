@@ -2,5 +2,49 @@
 
 public class TemperatureSensor : Sensor
 {
-    public float Value { get; set; }
+    // backfield
+    private float _Value;
+    public float Value
+    {
+        get => _Value;
+        set
+        {
+            _Value = value;
+
+            OnPropertyChanged("Value");
+            OnPropertyChanged("IsOverLimit");
+        }
+    }
+
+    // backfield
+    private string field;
+    public string Message
+    {
+        get => field;
+        set
+        {
+            field = value;
+
+            OnPropertyChanged("Message");
+        }
+
+    }
+
+    // C# 14
+    //public string Message
+    //{
+    //    get;
+    //    set
+    //    {
+    //        field = value;
+
+    //        OnPropertyChanged("Message");
+    //    }
+
+    //}
+
+
+    public const int Threshold = 100;
+
+    public bool IsOverLimit => Value > Threshold;
 }

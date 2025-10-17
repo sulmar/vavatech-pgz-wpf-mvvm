@@ -1,6 +1,13 @@
-﻿namespace Domain.Models;
+﻿using System.ComponentModel;
 
-public abstract class Base
+namespace Domain.Models;
+
+public abstract class Base : INotifyPropertyChanged
 {
-  
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));   
+    }
 }

@@ -45,6 +45,35 @@
                             </TextBlock.Text>
                         </TextBlock>
 
+
+                        <Grid Margin="10 0 0 0">
+
+                            <Ellipse >
+                                <Ellipse.Style>
+                                    <Style TargetType="Ellipse">
+                                        <Setter Property="Width" Value="35" />
+                                        <Setter Property="Height" Value="35" />
+                                        <Setter Property="Fill" Value="Green" />
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsOverLimit}" Value="True">
+                                                <Setter Property="Fill" Value="Red" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Ellipse.Style>
+                                
+                            </Ellipse>
+
+                            <TextBlock Text="{Binding Value}"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" />
+                            
+                        </Grid>
+
+                        
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -78,6 +107,15 @@
                      TickFrequency="1"
                     IsSnapToTickEnabled="True"
                     />
+
+            <Label>Temperature</Label>
+
+            <Slider Value="{Binding Value}"
+                     Minimum="0"
+                     Maximum="200"
+                     TickFrequency="1"
+                    IsSnapToTickEnabled="True"
+                    />  
 
 
         </StackPanel>
