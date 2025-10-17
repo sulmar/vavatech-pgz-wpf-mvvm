@@ -31,6 +31,8 @@ public partial class App : Application
         services.AddTransient<RegionsViewModel>();
         services.AddTransient<IRegionService, FakeRegionService>();
 
+        services.AddSingleton<ShellViewModel>();
+
         ServiceProvider = services.BuildServiceProvider();
 
         

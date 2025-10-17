@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
+        DataContext="{Binding Source={StaticResource Locator}, Path=ShellViewModel}"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
 
@@ -12,8 +13,8 @@
            
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Button>Add</Button>
-                <Button>Print</Button>
+                <Button Command="{Binding ShowMapCommand}" >Map</Button>
+                <Button Command="{Binding ShowSensorsCommand}">Sensors</Button>
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
             </StackPanel>
 
