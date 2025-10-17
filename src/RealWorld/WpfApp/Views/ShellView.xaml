@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:WpfApp"
         DataContext="{Binding Source={StaticResource Locator}, Path=ShellViewModel}"
         mc:Ignorable="d"
@@ -12,11 +13,18 @@
     <Grid>
            
         <DockPanel>
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <DockPanel DockPanel.Dock="Top">
                 <Button Command="{Binding ShowMapCommand}" >Map</Button>
                 <Button Command="{Binding ShowSensorsCommand}">Sensors</Button>
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
-            </StackPanel>
+                <Border BorderBrush="Black" BorderThickness="1" Margin="5" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseEnter">
+                            <i:InvokeCommandAction Command="{Binding ShowLogoCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
+            </DockPanel>
 
             <Frame Source="SensorsView.xaml" />
         </DockPanel>

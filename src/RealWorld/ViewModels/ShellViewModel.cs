@@ -8,16 +8,20 @@ using ViewModels.Commands;
 
 namespace ViewModels;
 
+
+// Install-Package Microsoft.Xaml.Behaviors.Wpf
 public class ShellViewModel : BaseViewModel
 {
     public ShellViewModel()
     {
         ShowMapCommand = new RelayCommand(ShowMapSensors, CanShowMapSensors);
         ShowSensorsCommand = new RelayCommand(ShowSensors);
+        ShowLogoCommand = new RelayCommand(ShowLogo);
     }
 
     public ICommand ShowMapCommand {  get; private set; }
     public ICommand ShowSensorsCommand { get; private set; }
+    public ICommand ShowLogoCommand { get; set; }
 
     public void ShowMapSensors()
     {
@@ -32,5 +36,11 @@ public class ShellViewModel : BaseViewModel
     public void ShowSensors()
     {
         Console.WriteLine("Show sensors!");
+    }
+
+
+    public void ShowLogo()
+    {
+        Console.WriteLine("Show logo!");
     }
 }
