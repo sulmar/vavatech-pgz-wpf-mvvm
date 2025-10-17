@@ -11,8 +11,8 @@ public class TemperatureSensor : Sensor
         {
             _Value = value;
 
-            OnPropertyChanged("Value");
-            OnPropertyChanged("IsOverLimit");
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(IsOverLimit));
         }
     }
 
@@ -25,7 +25,7 @@ public class TemperatureSensor : Sensor
         {
             field = value;
 
-            OnPropertyChanged("Message");
+            OnPropertyChanged();
         }
 
     }
