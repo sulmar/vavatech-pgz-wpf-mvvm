@@ -14,9 +14,11 @@ class FrameNavigationService : INavigationService
 {
     private readonly IDictionary<string, Type> routes = new Dictionary<string, Type>();
 
+    const string FrameName = "MainFrame";
+
     public void NavigateTo(string viewName)
     {
-        Frame frame = GetFrame("MainFrame");
+        Frame frame = GetFrame(FrameName);
 
         Type typeView = routes[viewName];
 
