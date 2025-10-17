@@ -1,27 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Markup;
+using System.Windows.Media;
 
 namespace WpfApp.MarkupExtensions;
 
 public class EventToCommandExtension : MarkupExtension
 {
-    public ICommand Command { get; set; }
+    public string CommandPath { get; set; }
 
-    public EventToCommandExtension(ICommand command)
-    {
-        this.Command  = command;
-    }
-
-    // TODO: zaimplementowac
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrEmpty(CommandPath))
+            return null;
+
+        var targetProvider = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
+        var targetElement = targetProvider?.TargetObject as FrameworkElement;
+        
+        if (targetElement?.DataContext == null)
+            return null;
+
+        var command = GetCommand(targetElement.DataContext, CommandPath);
+        if (command == null)
+            return null;
+
+        // Dla eventów myszy zwróć MouseEventHandler
+        return new MouseEventHandler((sender, e) =>
+        {
+            if (command.CanExecute(null))
+                command.Execute(null);
+        });
+    }
+
+    private ICommand GetCommand(object dataContext, string commandPath)
+    {
+        var property = dataContext.GetType().GetProperty(commandPath);
+        return property?.GetValue(dataContext) as ICommand;
     }
 }

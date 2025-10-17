@@ -29,9 +29,9 @@
                     </i:Interaction.Triggers>
                 </Border>
 
-                <!--<Border BorderBrush="Green" BorderThickness="1" Margin="5"
-                        MouseEnter="{me:EventToCommand ShowLogoCommand}"
-                        />-->
+                <Border BorderBrush="Green" BorderThickness="1" Margin="5"
+                        MouseEnter="{me:EventToCommand CommandPath=ShowLogoCommand}"
+                        />
 
 
             </DockPanel>

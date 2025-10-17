@@ -31,6 +31,50 @@ public class RelayCommand : ICommand
     }
 }
 
+// RelayCommand z obsługą parametrów
+public class RelayCommand<T> : ICommand
+{
+    private readonly Action<T> execute;
+    private readonly Func<T, bool> canExecute;
+
+    public RelayCommand(Action<T> execute, Func<T, bool> canExecute = null)
+    {
+        this.execute = execute;
+        this.canExecute = canExecute;
+    }
+
+    public event EventHandler? CanExecuteChanged;
+
+    public bool CanExecute(object? parameter)
+    {
+        if (canExecute == null)
+            return true;
+            
+        // Bezpieczne rzutowanie - obsługa null
+        try
+        {
+            return canExecute((T)parameter);
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public void Execute(object? parameter)
+    {
+        try
+        {
+            execute?.Invoke((T)parameter);
+        }
+        catch (Exception ex)
+        {
+            // Log error or handle gracefully
+            System.Diagnostics.Debug.WriteLine($"Error executing command: {ex.Message}");
+        }
+    }
+}
+
 // RelayCommand / DelegateCommand
 
 /*
