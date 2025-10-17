@@ -51,15 +51,15 @@
 
         </ListBox>
 
-        <StackPanel Grid.Column="1" >
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedSensor}" >
             <Label>Name</Label>
-            <TextBox Text="{Binding SelectedSensor.Name}" />
+            <TextBox Text="{Binding Name}" />
 
             <Label>Ip</Label>
-            <TextBox Text="{Binding SelectedSensor.IpAddress}" />
+            <TextBox Text="{Binding IpAddress}" />
 
             <Label>X</Label>
-            <Slider Value="{Binding SelectedSensor.X}"
+            <Slider Value="{Binding X}"
                     Minimum="0"
                     Maximum="300"
                     TickFrequency="1"
@@ -67,7 +67,7 @@
                     />
 
             <Label>Y</Label>
-            <Slider Value="{Binding SelectedSensor.Y}"
+            <Slider Value="{Binding Y}"
                      Minimum="0"
                      Maximum="300"
                      TickFrequency="1"
