@@ -33,7 +33,7 @@ public class ShellViewModel : BaseViewModel
     {
         Console.WriteLine("Show map sensors!");
 
-        navigationService.NavigateTo("MapSensorsView");
+        navigationService.NavigateTo("Map");
     }
 
     public bool CanShowMapSensors()
@@ -45,7 +45,7 @@ public class ShellViewModel : BaseViewModel
     {
         Console.WriteLine("Show sensors!");
 
-        navigationService.NavigateTo("SensorsView");
+        navigationService.NavigateTo("Sensors");
     }
 
 

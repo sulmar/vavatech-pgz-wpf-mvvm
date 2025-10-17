@@ -8,5 +8,6 @@ namespace ViewModels.Services;
 
 public interface INavigationService
 {
-    void NavigateTo(string viewName);
+    void NavigateTo(string routeName);
+    void RegisterRoute(string routeName, Type view);
 }

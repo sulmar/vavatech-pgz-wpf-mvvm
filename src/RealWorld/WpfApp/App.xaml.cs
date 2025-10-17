@@ -43,7 +43,14 @@ public partial class App : Application
 
         ServiceProvider = services.BuildServiceProvider();
 
-        
+
+        var navigationService = ServiceProvider.GetRequiredService<INavigationService>();
+        navigationService.RegisterRoute("Map", typeof(MapSensorsView));
+        navigationService.RegisterRoute("Sensors", typeof(SensorsView));
+
+
+
+
     }
 }
 
