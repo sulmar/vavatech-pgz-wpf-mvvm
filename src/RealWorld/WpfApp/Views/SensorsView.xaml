@@ -53,12 +53,16 @@
 
         <StackPanel Grid.Column="1" DataContext="{Binding SelectedSensor}" >
             <Label>Name</Label>
-            <TextBox Text="{Binding Name}" />
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Label>FullName</Label>
+            <TextBox IsReadOnly="True" Text="{Binding FullName, Mode=OneWay}" />
 
             <Label>Ip</Label>
             <TextBox Text="{Binding IpAddress}" />
 
             <Label>X</Label>
+            <TextBox Text="{Binding X, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
             <Slider Value="{Binding X}"
                     Minimum="0"
                     Maximum="300"
@@ -67,6 +71,7 @@
                     />
 
             <Label>Y</Label>
+            <TextBox Text="{Binding Y, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" />
             <Slider Value="{Binding Y}"
                      Minimum="0"
                      Maximum="300"
