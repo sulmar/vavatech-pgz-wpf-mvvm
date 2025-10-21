@@ -31,7 +31,8 @@
                 ap:SortHelper.PropertyName="Name"                
             
                 ItemTemplate="{StaticResource EndpointDataTemplate}"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"                
+            >
 
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>

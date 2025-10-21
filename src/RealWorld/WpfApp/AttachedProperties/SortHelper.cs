@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using System.Linq;
@@ -27,11 +28,31 @@ public static class SortHelper
         var propertyName = GetPropertyName(control);
         if (propertyName == null) return;
 
-        var view = CollectionViewSource.GetDefaultView(control.ItemsSource);
-        if (view == null) return;
+        //var view = CollectionViewSource.GetDefaultView(control.ItemsSource);
+        //if (view == null) return;
 
-        view.SortDescriptions.Clear();
-        view.SortDescriptions.Add(new System.ComponentModel.SortDescription(propertyName, System.ComponentModel.ListSortDirection.Ascending));        
+        void ApplySort()
+        {
+            var items = control.Items;
+
+            items.SortDescriptions.Clear();
+            items.SortDescriptions.Add(new System.ComponentModel.SortDescription(propertyName, System.ComponentModel.ListSortDirection.Ascending));
+            control.Items.Refresh();
+        }
+
+        if (control.IsLoaded)
+            ApplySort();
+        else
+        {
+            RoutedEventHandler? once = null;
+            once = (_, __) =>
+            {
+                control.Loaded -= once;
+                ApplySort();
+            };
+
+            control.Loaded += once; 
+        }
 
     }
 }
