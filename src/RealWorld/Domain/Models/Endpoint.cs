@@ -5,6 +5,7 @@ public class Endpoint : BaseEntity
     public string Name { get; set; }
     public Category Category { get; set; }
     public bool IsActive { get; set; }
+    public bool Toggled { get; set; }
 
     public Endpoint()
     {

@@ -5,10 +5,12 @@
                     >
 
     <DataTemplate x:Key="EndpointDataTemplate" DataType="{x:Type m:Endpoint}">
-        <Grid >
+        <Grid>
             <ToggleButton Content="{Binding Name}" 
                           Style="{StaticResource EndpointToggleButtonStyle}"
                           Background="{Binding Category, Converter={c:CategoryToBrushConverter}}"
+                          Visibility="{Binding IsActive, Converter={c:BoolToVisibilityConverter Mode=Collapsed}}"
+                          IsChecked="{Binding Toggled}"
                           />
         </Grid>
     </DataTemplate>
