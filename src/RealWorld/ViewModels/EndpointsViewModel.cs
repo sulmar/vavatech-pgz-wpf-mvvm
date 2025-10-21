@@ -25,6 +25,9 @@ public class EndpointsViewModel : BaseViewModel
                 OnPropertyChanged(nameof(EndPointsPaged));
                 OnPropertyChanged(nameof(CanPrevPage));
                 OnPropertyChanged(nameof(CanNextPage));
+
+                NextPageCommand.OnCanExecuteChanged();
+                PrevPageCommand.OnCanExecuteChanged();
             }
         }
     }
@@ -35,8 +38,8 @@ public class EndpointsViewModel : BaseViewModel
 
     public int TotalPages => (int) Math.Ceiling((double) EndPoints.Count / PageSize);
 
-    public ICommand NextPageCommand => new RelayCommand(NextPage);
-    public ICommand PrevPageCommand => new RelayCommand(PrevPage);
+    public RelayCommand NextPageCommand => new RelayCommand(NextPage, ()=>CanNextPage);
+    public RelayCommand PrevPageCommand => new RelayCommand(PrevPage, ()=>CanPrevPage);
 
     public EndpointsViewModel(IEndpointService service)
     {

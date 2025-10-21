@@ -20,6 +20,11 @@ public class RelayCommand : ICommand
 
     public event EventHandler? CanExecuteChanged;
 
+    public void OnCanExecuteChanged()
+    {
+        CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     public bool CanExecute(object? parameter)
     {
         return canExecute == null || canExecute();
