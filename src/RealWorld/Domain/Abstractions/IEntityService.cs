@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using System.Collections.ObjectModel;
 
 namespace Domain.Abstractions;
 

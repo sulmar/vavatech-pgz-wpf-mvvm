@@ -12,7 +12,7 @@
     <Grid>
 
         <ListBox 
-                ItemsSource="{Binding EndPointsPaged}" 
+                ItemsSource="{Binding EndPoints}" 
                 ItemTemplate="{StaticResource EndpointDataTemplate}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
 

@@ -1,5 +1,7 @@
 ﻿using Domain.Abstractions;
 using Domain.Models;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
 using ViewModels.Commands;
 
@@ -22,7 +24,7 @@ public class EndpointsViewModel : BaseViewModel
             {
                 _currentPage = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(EndPointsPaged));
+                OnPropertyChanged(nameof(EndPoints));
                 OnPropertyChanged(nameof(CanPrevPage));
                 OnPropertyChanged(nameof(CanNextPage));
 
@@ -32,9 +34,9 @@ public class EndpointsViewModel : BaseViewModel
         }
     }
 
-    public List<Endpoint> EndPoints { get; set; }
+    public ObservableCollection<Endpoint> EndPoints { get; set; }
 
-    public List<Endpoint> EndPointsPaged => EndPoints.Skip(CurrentPage * PageSize).Take(PageSize).ToList();
+    // public List<Endpoint> EndPointsPaged => EndPoints.Skip(CurrentPage * PageSize).Take(PageSize).ToList();
 
     public int TotalPages => (int) Math.Ceiling((double) EndPoints.Count / PageSize);
 
@@ -45,7 +47,16 @@ public class EndpointsViewModel : BaseViewModel
     {
         this.service = service;
 
-        EndPoints = service.GetAll();
+        EndPoints = new ObservableCollection<Endpoint>(service.GetAll());
+
+        Customer customer1 = new Customer { FirstName = "John", LastName = "Smith", Email = "john@domain.com" };
+
+        foreach (var property in customer1)
+        {
+            Debug.WriteLine(property);
+        }
+                
+
     }
 
 

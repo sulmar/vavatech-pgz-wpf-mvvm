@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models;
 
-public partial class Customer : BaseEntity
+public partial class Customer : BaseEntity, IEnumerable
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -29,6 +30,12 @@ public partial class Customer : BaseEntity
        // Console.WriteLine(stopwatch.Elapsed.ToString());
     }
 
+    public IEnumerator GetEnumerator()
+    {
+        yield return FirstName;
+        yield return LastName;
+        yield return Email;
+    }
 }
 
 public partial class Customer
