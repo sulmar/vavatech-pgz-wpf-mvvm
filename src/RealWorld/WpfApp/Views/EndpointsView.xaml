@@ -14,7 +14,9 @@
         <CollectionViewSource x:Key="EndPointViewSource" Source="{Binding EndPoints}">
 
             <CollectionViewSource.SortDescriptions>
-                <scm:SortDescription PropertyName="Name" Direction="Descending" />
+                <!--<scm:SortDescription PropertyName="Name" Direction="Descending" />-->
+                <!--<scm:SortDescription PropertyName="Category" Direction="Ascending" />-->
+                <scm:SortDescription PropertyName="IsActive" Direction="Ascending" />
             </CollectionViewSource.SortDescriptions>
             
         </CollectionViewSource>
