@@ -5,14 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp.Views"
       DataContext="{Binding Source={StaticResource Locator}, Path=EndpointsViewModel}"
+      xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EndpointsView">
 
+    <Page.Resources>
+        <CollectionViewSource x:Key="EndPointViewSource" Source="{Binding EndPoints}">
+
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Name" Direction="Descending" />
+            </CollectionViewSource.SortDescriptions>
+            
+        </CollectionViewSource>
+    </Page.Resources>
+
     <Grid>
 
         <ListBox 
-                ItemsSource="{Binding EndPoints}" 
+                ItemsSource="{Binding Source={StaticResource EndPointViewSource}}" 
                 ItemTemplate="{StaticResource EndpointDataTemplate}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
 

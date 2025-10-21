@@ -34,7 +34,7 @@ public class EndpointsViewModel : BaseViewModel
         }
     }
 
-    public ObservableCollection<Endpoint> EndPoints { get; set; }
+    public List<Endpoint> EndPoints { get; set; }
 
     // public List<Endpoint> EndPointsPaged => EndPoints.Skip(CurrentPage * PageSize).Take(PageSize).ToList();
 
@@ -47,7 +47,7 @@ public class EndpointsViewModel : BaseViewModel
     {
         this.service = service;
 
-        EndPoints = new ObservableCollection<Endpoint>(service.GetAll());
+        EndPoints =(service.GetAll());
 
         Customer customer1 = new Customer { FirstName = "John", LastName = "Smith", Email = "john@domain.com" };
 
