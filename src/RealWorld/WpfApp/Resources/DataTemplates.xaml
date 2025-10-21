@@ -1,11 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:m="clr-namespace:Domain.Models;assembly=Domain"
+                    xmlns:c="clr-namespace:WpfApp.Converters"
+                    >
+
+    <c:CategoryToBrushConverter x:Key="CategoryToBrushConverter" />
 
 
-    <DataTemplate x:Key="EndpointDataTemplate">
-        <Grid>
+    <DataTemplate x:Key="EndpointDataTemplate" DataType="{x:Type m:Endpoint}">
+        <Grid >
             <ToggleButton Content="{Binding Name}" 
-                        Style="{StaticResource EndpointToggleButtonStyle}" />
+                          Style="{StaticResource EndpointToggleButtonStyle}"
+                          Background="{Binding Category, Converter={StaticResource CategoryToBrushConverter}}"
+                          />
         </Grid>
     </DataTemplate>
 
