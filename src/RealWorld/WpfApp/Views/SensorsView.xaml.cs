@@ -28,5 +28,10 @@ namespace WpfApp.Views
         {
             InitializeComponent();
         }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+          
+        }
     }
 }

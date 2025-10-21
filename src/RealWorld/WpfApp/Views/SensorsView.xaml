@@ -6,9 +6,11 @@
       xmlns:local="clr-namespace:WpfApp.Views"
       xmlns:vm="clr-namespace:ViewModels;assembly=ViewModels"
       xmlns:uc="clr-namespace:WpfApp.CustomControls"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:b="clr-namespace:WpfApp.Behaviors"
       DataContext="{Binding SensorsViewModel, Source={StaticResource Locator}}"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="SensorsView">
 
     <Grid>
@@ -115,7 +117,32 @@
                      Maximum="200"
                      TickFrequency="1"
                     IsSnapToTickEnabled="True"
-                    />  
+                    />
+
+
+
+            <Grid >
+                <Canvas Width="200" Height="200" Background="White"
+                        MouseMove="Canvas_MouseMove">
+
+                    <i:Interaction.Behaviors>
+                        <b:MouseCoordinateBehavior X="{Binding X}" Y="{Binding Y}" />
+                    </i:Interaction.Behaviors>
+
+                    <Line X1="0" Y1="100" 
+                          X2="200" Y2="100" 
+                          StrokeThickness="1"
+                          Stroke="Black"
+                      />
+
+                    <Line X1="100" Y1="0"
+                          X2="100" Y2="200"
+                          StrokeThickness="1"
+                            Stroke="Black"
+                          />
+
+                </Canvas>
+            </Grid>
 
 
         </StackPanel>
