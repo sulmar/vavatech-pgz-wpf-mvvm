@@ -7,8 +7,7 @@
     <DataTemplate x:Key="EndpointDataTemplate" DataType="{x:Type m:Endpoint}">
         <Grid>
             <ToggleButton Content="{Binding Name}" 
-                          Style="{StaticResource EndpointToggleButtonStyle}"                          
-                          Visibility="{Binding IsActive, Converter={c:BoolToVisibilityConverter Mode=Collapsed}}"
+                          Style="{StaticResource EndpointToggleButtonStyle}"                                                   
                           IsChecked="{Binding Toggled}"
                           >
 

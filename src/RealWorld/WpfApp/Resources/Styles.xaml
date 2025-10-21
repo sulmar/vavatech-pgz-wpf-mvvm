@@ -40,7 +40,13 @@
             <DataTrigger Binding="{Binding Category}" Value="{x:Static m:Category.Radionet}">
                 <Setter Property="Background" Value="Green" />
             </DataTrigger>
+
+            <DataTrigger Binding="{Binding IsActive}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
         </Style.Triggers>
+        
+        
         
     </Style>
 
