@@ -4,14 +4,11 @@
                     xmlns:c="clr-namespace:WpfApp.Converters"
                     >
 
-    <c:CategoryToBrushConverter x:Key="CategoryToBrushConverter" />
-
-
     <DataTemplate x:Key="EndpointDataTemplate" DataType="{x:Type m:Endpoint}">
         <Grid >
             <ToggleButton Content="{Binding Name}" 
                           Style="{StaticResource EndpointToggleButtonStyle}"
-                          Background="{Binding Category, Converter={StaticResource CategoryToBrushConverter}}"
+                          Background="{Binding Category, Converter={c:CategoryToBrushConverter}}"
                           />
         </Grid>
     </DataTemplate>
