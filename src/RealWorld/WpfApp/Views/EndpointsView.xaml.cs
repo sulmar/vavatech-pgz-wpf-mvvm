@@ -23,6 +23,11 @@ namespace WpfApp.Views
         public EndpointsView()
         {
             InitializeComponent();
+
+            //var view = (CollectionViewSource) FindResource("cvs");
+
+            //view.SortDescriptions.Clear();
+            //view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Name", System.ComponentModel.ListSortDirection.Ascending));
         }
     }
 }

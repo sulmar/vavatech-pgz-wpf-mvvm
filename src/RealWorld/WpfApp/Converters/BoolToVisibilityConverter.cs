@@ -13,6 +13,7 @@ namespace WpfApp.Converters
 {
     class BoolToVisibilityConverter : MarkupExtension, IValueConverter
     {
+
         public Visibility Mode { get; set; } = Visibility.Hidden;
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

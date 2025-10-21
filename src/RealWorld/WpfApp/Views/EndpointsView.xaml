@@ -6,26 +6,30 @@
       xmlns:local="clr-namespace:WpfApp.Views"
       DataContext="{Binding Source={StaticResource Locator}, Path=EndpointsViewModel}"
       xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+      xmlns:ap="clr-namespace:WpfApp.AttachedProperties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EndpointsView">
 
-    <Page.Resources>
-        <CollectionViewSource x:Key="EndPointViewSource" Source="{Binding EndPointsPaged}">
+    <!--<Page.Resources>
+        <CollectionViewSource x:Name="cvs" x:Key="EndPointViewSource" Source="{Binding EndPointsPaged}">
 
             <CollectionViewSource.SortDescriptions>
-                <!--<scm:SortDescription PropertyName="Name" Direction="Descending" />-->
-                <!--<scm:SortDescription PropertyName="Category" Direction="Ascending" />-->
-                <scm:SortDescription PropertyName="IsActive" Direction="Ascending" />
+                --><!--<scm:SortDescription PropertyName="Name" Direction="Descending" />-->
+                <!--<scm:SortDescription PropertyName="Category" Direction="Ascending" />--><!--
+                <scm:SortDescription PropertyName="IsActive" Direction="Ascending"  />
+                
             </CollectionViewSource.SortDescriptions>
             
         </CollectionViewSource>
-    </Page.Resources>
+    </Page.Resources>-->
 
     <Grid>
 
         <ListBox 
-                ItemsSource="{Binding Source={StaticResource EndPointViewSource}}" 
+                ItemsSource="{Binding EndPoints}" 
+                ap:SortHelper.PropertyName="Name"                
+            
                 ItemTemplate="{StaticResource EndpointDataTemplate}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
 
