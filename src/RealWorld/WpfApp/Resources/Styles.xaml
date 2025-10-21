@@ -20,4 +20,11 @@
         <Setter Property="Width" Value="100" />
     </Style>
 
+
+    <Style x:Key="EndpointToggleButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Height" Value="200" />
+        <Setter Property="Margin" Value="10" />
+    </Style>
+
 </ResourceDictionary>

@@ -17,6 +17,7 @@
             <DockPanel DockPanel.Dock="Top">
                 <Button Command="{Binding ShowMapCommand}" >Map</Button>
                 <Button Command="{Binding ShowSensorsCommand}">Sensors</Button>
+                <Button Command="{Binding ShowEndpointsCommand}">Endpoints</Button>
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
 
                 <TextBlock Text="{me:Hello Text='John Smith'}" />

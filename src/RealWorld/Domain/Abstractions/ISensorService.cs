@@ -1,15 +1,7 @@
-﻿using Domain.Models;
-using Domain.Models.Sensors;
+﻿using Domain.Models.Sensors;
 
 namespace Domain.Abstractions;
 
-public interface ISensorService
+public interface ISensorService : IEntityService<Sensor>
 {
-    List<Sensor> GetAll();
-}
-
-
-public interface IRegionService
-{
-    List<Region> GetAll();
 }

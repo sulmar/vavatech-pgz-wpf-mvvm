@@ -21,11 +21,13 @@ public class ShellViewModel : BaseViewModel
 
         ShowMapCommand = new RelayCommand(ShowMapSensors, CanShowMapSensors);
         ShowSensorsCommand = new RelayCommand(ShowSensors);
+        ShowEndpointsCommand = new RelayCommand(ShowEndpoints);
         ShowLogoCommand = new RelayCommand(ShowLogo);
     }
 
     public ICommand ShowMapCommand {  get; private set; }
     public ICommand ShowSensorsCommand { get; private set; }
+    public ICommand ShowEndpointsCommand { get; private set; }
     public ICommand ShowLogoCommand { get; set; }
 
 
@@ -46,6 +48,11 @@ public class ShellViewModel : BaseViewModel
         Console.WriteLine("Show sensors!");
 
         navigationService.NavigateTo("Sensors");
+    }
+
+    public void ShowEndpoints()
+    {
+        navigationService.NavigateTo("Endpoints");
     }
 
 

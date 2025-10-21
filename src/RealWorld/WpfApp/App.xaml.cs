@@ -41,13 +41,18 @@ public partial class App : Application
         services.AddSingleton<ShellViewModel>();
         services.AddSingleton<INavigationService, FrameNavigationService>();
 
+
+        services.AddSingleton<EndpointsView>();
+        services.AddSingleton<EndpointsViewModel>();
+        services.AddSingleton<IEndpointService, FakeEndpointService>();
+
         ServiceProvider = services.BuildServiceProvider();
 
 
         var navigationService = ServiceProvider.GetRequiredService<INavigationService>();
         navigationService.RegisterRoute("Map", typeof(MapSensorsView));
         navigationService.RegisterRoute("Sensors", typeof(SensorsView));
-
+        navigationService.RegisterRoute("Endpoints", typeof(EndpointsView));
 
 
 

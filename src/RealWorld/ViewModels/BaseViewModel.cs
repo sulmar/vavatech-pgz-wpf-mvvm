@@ -1,6 +1,8 @@
-﻿namespace ViewModels;
+﻿using System.ComponentModel;
 
-public abstract class BaseViewModel
+namespace ViewModels;
+
+public abstract partial class BaseViewModel : INotifyPropertyChanged
 {
 
 }
