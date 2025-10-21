@@ -3,6 +3,7 @@ using Domain.Models;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
+using System.ComponentModel;
 using ViewModels.Commands;
 
 namespace ViewModels;
@@ -24,7 +25,7 @@ public class EndpointsViewModel : BaseViewModel
             {
                 _currentPage = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(EndPoints));
+                OnPropertyChanged(nameof(EndPointsPaged));
                 OnPropertyChanged(nameof(CanPrevPage));
                 OnPropertyChanged(nameof(CanNextPage));
 
@@ -34,14 +35,14 @@ public class EndpointsViewModel : BaseViewModel
         }
     }
 
-    public List<Endpoint> EndPoints { get; set; }
+    public List<Endpoint> EndPoints { get; set; }    
 
-    // public List<Endpoint> EndPointsPaged => EndPoints.Skip(CurrentPage * PageSize).Take(PageSize).ToList();
+    public List<Endpoint> EndPointsPaged => EndPoints.Skip(CurrentPage * PageSize).Take(PageSize).ToList();
 
     public int TotalPages => (int) Math.Ceiling((double) EndPoints.Count / PageSize);
 
-    public RelayCommand NextPageCommand => new RelayCommand(NextPage, ()=>CanNextPage);
-    public RelayCommand PrevPageCommand => new RelayCommand(PrevPage, ()=>CanPrevPage);
+    public RelayCommand NextPageCommand => new RelayCommand(NextPage);
+    public RelayCommand PrevPageCommand => new RelayCommand(PrevPage);
 
     public EndpointsViewModel(IEndpointService service)
     {

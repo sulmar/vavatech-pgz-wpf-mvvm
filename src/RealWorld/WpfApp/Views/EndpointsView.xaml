@@ -11,7 +11,7 @@
       Title="EndpointsView">
 
     <Page.Resources>
-        <CollectionViewSource x:Key="EndPointViewSource" Source="{Binding EndPoints}">
+        <CollectionViewSource x:Key="EndPointViewSource" Source="{Binding EndPointsPaged}">
 
             <CollectionViewSource.SortDescriptions>
                 <!--<scm:SortDescription PropertyName="Name" Direction="Descending" />-->
