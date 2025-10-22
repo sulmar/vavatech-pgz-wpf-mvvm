@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<DefineConstants>DEBUG;FEATURE_EXPORT</DefineConstants>
+	</PropertyGroup>
+
 </Project>

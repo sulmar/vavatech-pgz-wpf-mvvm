@@ -13,6 +13,9 @@
     <Grid>
 
         <uc:MapSensors ItemsSource="{Binding Sensors}" />
+        
+        
+
 
 
     </Grid>

@@ -6,6 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:WpfApp"
         xmlns:me="clr-namespace:WpfApp.MarkupExtensions"
+        xmlns:c="clr-namespace:WpfApp.Controls"
         DataContext="{Binding Source={StaticResource Locator}, Path=ShellViewModel}"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
@@ -15,10 +16,30 @@
            
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
+
+                <Menu>
+                    <MenuItem Header="File">
+                        <MenuItem Header="Map" Command="{Binding ShowMapCommand}" />
+                        <MenuItem Header="Sensors" Command="{Binding ShowSensorsCommand}"/>
+                    </MenuItem>
+                </Menu>
+                
                 <Button Command="{Binding ShowMapCommand}" >Map</Button>
                 <Button Command="{Binding ShowSensorsCommand}">Sensors</Button>
                 <Button Command="{Binding ShowEndpointsCommand}">Endpoints</Button>
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
+
+
+                <c:FeatureFlagView Feature="EXPORT">
+                    <Button Content="Export">
+                        <Button.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Export to PDF"/>
+                                <MenuItem Header="Export to docx"/>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                </c:FeatureFlagView>
 
                 <TextBlock Text="{me:Hello Text='John Smith'}" />
                 

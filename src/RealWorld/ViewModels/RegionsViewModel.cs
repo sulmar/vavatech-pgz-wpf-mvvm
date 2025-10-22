@@ -16,6 +16,12 @@ public class RegionsViewModel : ItemsViewModel<Region>
     public RegionsViewModel(IRegionService service)
     {
         Items = service.GetAll();
-    }
 
+
+#if FEATURE_EXPORT
+        Console.WriteLine("Exporting...");
+#else
+    
+#endif
+    }
 }

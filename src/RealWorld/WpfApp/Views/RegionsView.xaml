@@ -6,27 +6,31 @@
       xmlns:local="clr-namespace:WpfApp.Views"
       DataContext="{Binding Source={StaticResource Locator}, Path=RegionsViewModel}"
       xmlns:uc="clr-namespace:WpfApp.CustomControls"
+      xmlns:c="clr-namespace:WpfApp.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegionsView">
 
     <Grid>
 
-        <ListBox ItemsSource="{Binding Regions}">
-            <ListBox.ItemTemplate>
-                <DataTemplate >
-                    <StackPanel>
-                        <Label Content="{Binding Name}" />
+     
+            <ListBox ItemsSource="{Binding Regions}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate >
+                        <StackPanel>
+                            <Label Content="{Binding Name}" />
 
-                        <uc:MapSensors ItemsSource="{Binding Sensors}"
-                                       Width="400"
-                                       Height="200"
-                                       />
+                            <uc:MapSensors ItemsSource="{Binding Sensors}"
+                                           Width="400"
+                                           Height="200"
+                                           />
 
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+
     </Grid>
 </Page>
