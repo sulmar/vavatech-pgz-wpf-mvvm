@@ -10,7 +10,7 @@ public class FakeEndpointService : IEndpointService
         return
         [
             new Endpoint { Id = 1, Name = "A", Category = Category.Conference },
-            new Endpoint { Id = 2, Name = "B", Category = Category.P2P },
+            new Endpoint { Id = 2, Name = "B", Category = Category.P2P, IsActive = false },
             new Endpoint { Id = 3, Name = "C", Category = Category.Conference },
             new Endpoint { Id = 4, Name = "D", Category = Category.P2P, IsActive = false },
             new Endpoint { Id = 5, Name = "E", Category = Category.Conference },

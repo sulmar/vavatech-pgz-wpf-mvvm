@@ -9,12 +9,9 @@
             <ToggleButton
                           Style="{StaticResource EndpointToggleButtonStyle}"                                                   
                           IsChecked="{Binding Toggled}"
-                          Template="{StaticResource RoundedToggleButtonTemplate}"
-                          >
-
-                <ToggleButton.Content>
-                    <Image Width="48" Height="48" Source="/Assets/Images/Mic-03.png" />
-                </ToggleButton.Content>
+                          Template="{StaticResource RoundedToggleButtonTemplate}" 
+                
+                >
 
                 <ToggleButton.ContextMenu>
                     <ContextMenu>
@@ -29,6 +26,8 @@
                     </ContextMenu>
                 </ToggleButton.ContextMenu>
 
+                        
+               
             </ToggleButton>
 
             <Button

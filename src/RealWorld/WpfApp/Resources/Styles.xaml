@@ -6,7 +6,7 @@
 
     <sys:Double x:Key="ButtonWidth">200</sys:Double>
 
-    <SolidColorBrush x:Key="CheckedColorBrush">Yellow</SolidColorBrush>
+    <SolidColorBrush x:Key="CheckedColorBrush">DarkGreen</SolidColorBrush>
 
     <Style x:Key="DefaultButtonStyle" TargetType="Button">
         <Setter Property="Width" Value="{StaticResource ButtonWidth}" />
@@ -30,10 +30,14 @@
         <Setter Property="Height" Value="200" />
         <Setter Property="Margin" Value="10" />
 
-        <Setter Property="Background" Value="Red" />
+        <Setter Property="Content">
+            <Setter.Value>
+                <Image Width="48" Height="48" Source="{StaticResource MicrophoneImage}" />
+            </Setter.Value>
+        </Setter>
 
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Category}" Value="{x:Static m:Category.P2P}">
+            <!--<DataTrigger Binding="{Binding Category}" Value="{x:Static m:Category.P2P}">
                 <Setter Property="Background" Value="Violet" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Category}" Value="{x:Static m:Category.Conference}">
@@ -41,11 +45,15 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding Category}" Value="{x:Static m:Category.Radionet}">
                 <Setter Property="Background" Value="Green" />
-            </DataTrigger>
+            </DataTrigger>-->
 
-            <DataTrigger Binding="{Binding IsActive}" Value="False">
-                <Setter Property="Visibility" Value="Collapsed" />
-            </DataTrigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Image Width="48" Height="48" Source="{StaticResource MuteImage}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
         </Style.Triggers>
                 
         

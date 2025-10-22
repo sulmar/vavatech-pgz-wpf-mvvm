@@ -55,7 +55,8 @@
             
         </Border>
 
-        <ControlTemplate.Triggers>
+        
+        <!--<ControlTemplate.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter TargetName="border" Property="Background" Value="{StaticResource CheckedColorBrush}" />
 
@@ -98,7 +99,7 @@
             
             
             
-        </ControlTemplate.Triggers>
+        </ControlTemplate.Triggers>-->
         
     </ControlTemplate>
     

@@ -31,7 +31,8 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Background="DarkGray">
+                        <Image Width="48" Height="48" Source="{StaticResource MicrophoneImage}" />
                         <Label Content="{Binding Name}" Width="200" />
                         <Label Content="{Binding IpAddress}" />
 

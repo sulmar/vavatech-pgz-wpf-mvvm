@@ -24,9 +24,15 @@
                     </MenuItem>
                 </Menu>
 
-                <Button Command="{Binding ShowMapCommand}" >Map</Button>
-                <Button Command="{Binding ShowSensorsCommand}">Sensors</Button>
-                <Button Command="{Binding ShowEndpointsCommand}">Endpoints</Button>
+                <Button Command="{Binding ShowMapCommand}" >
+                    <Image Source="{StaticResource MicrophoneImage}" />
+                </Button>
+                <Button Command="{Binding ShowSensorsCommand}">
+                    <Image Source="{StaticResource MicrophoneImage}" />
+                </Button>
+                <Button Command="{Binding ShowEndpointsCommand}">
+                    <Image Source="{StaticResource MicrophoneImage}" />
+                </Button>
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
 
                 <c:FeatureFlagView Feature="EXPORT">
