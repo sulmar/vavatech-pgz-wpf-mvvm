@@ -43,9 +43,15 @@
         </ListBox>
 
 
-        <Button HorizontalAlignment="Left" Width="50" Height="50" Command="{Binding PrevPageCommand}">Prev</Button>
+        <Button 
+            HorizontalAlignment="Left" 
+            Style="{StaticResource NavigationButtonStyle}"
+            Command="{Binding PrevPageCommand}">Prev</Button>
 
-        <Button HorizontalAlignment="Right" Width="50" Height="50" Command="{Binding NextPageCommand}">Next</Button>
+        <Button 
+            HorizontalAlignment="Right" 
+            Style="{StaticResource NavigationButtonStyle}"
+            Command="{Binding NextPageCommand}">Next</Button>
            
               
     </Grid>
