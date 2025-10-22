@@ -26,29 +26,32 @@
 
     <Grid>
 
-        <ListBox 
-                ItemsSource="{Binding EndPoints}" 
+        <ListBox
+                ItemsSource="{Binding EndPointsPaged}" 
                 ap:SortHelper.PropertyName="Name"                
             
                 ItemTemplate="{StaticResource EndpointDataTemplate}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"                
             >
 
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
 
         </ListBox>
 
-
         <Button 
+            Template="{StaticResource RoundedButtonTemplate}"
             HorizontalAlignment="Left" 
+            BorderBrush="Red"
             Style="{StaticResource NavigationButtonStyle}"
             Command="{Binding PrevPageCommand}">Prev</Button>
 
         <Button 
+            Background="Green"
+            Template="{StaticResource RoundedButtonTemplate}"
             HorizontalAlignment="Right" 
             Style="{StaticResource NavigationButtonStyle}"
             Command="{Binding NextPageCommand}">Next</Button>
