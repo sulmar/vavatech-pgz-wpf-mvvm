@@ -58,7 +58,46 @@
         <ControlTemplate.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter TargetName="border" Property="Background" Value="{StaticResource CheckedColorBrush}" />
+
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                                Storyboard.TargetName="scale" 
+                                Storyboard.TargetProperty="ScaleX"
+                                To="0.95" Duration="0:0:0.1"/>
+
+                            <DoubleAnimation 
+                                Storyboard.TargetName="scale" 
+                                Storyboard.TargetProperty="ScaleY"
+                                To="0.95" Duration="0:0:0.1"/>                
+                            
+                            
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                                Storyboard.TargetName="scale" 
+                                Storyboard.TargetProperty="ScaleX"
+                                To="1" Duration="0:0:0.1"/>
+
+                            <DoubleAnimation 
+                                Storyboard.TargetName="scale" 
+                                Storyboard.TargetProperty="ScaleY"
+                                To="1" Duration="0:0:0.1"/>           
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+
+                
             </Trigger>
+            
+            
+            
         </ControlTemplate.Triggers>
         
     </ControlTemplate>
