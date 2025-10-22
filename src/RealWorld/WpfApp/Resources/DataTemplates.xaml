@@ -5,15 +5,30 @@
                     >
 
     <DataTemplate x:Key="EndpointDataTemplate" DataType="{x:Type m:Endpoint}">
-        <Grid>
+        <StackPanel>
             <ToggleButton Content="{Binding Name}" 
                           Style="{StaticResource EndpointToggleButtonStyle}"                                                   
                           IsChecked="{Binding Toggled}"
                           Template="{StaticResource RoundedToggleButtonTemplate}"
                           >
 
+                <ToggleButton.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Remove"
+                                     Command="{Binding PlacementTarget.DataContext.RemoveCommand,
+                                    RelativeSource={RelativeSource AncestorType=ContextMenu}}" 
+                                  
+                                 CommandParameter="{Binding PlacementTarget.DataContext,
+                                    RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                  
+                                 />
+                    </ContextMenu>
+                </ToggleButton.ContextMenu>
+
             </ToggleButton>
-        </Grid>
+
+            <Button Height="50" Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveCommand}" >Remove</Button>
+        </StackPanel>
     </DataTemplate>
 
 

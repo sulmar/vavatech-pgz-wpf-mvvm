@@ -11,6 +11,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EndpointsView">
 
+    <Page.Resources>
+
+        <Storyboard x:Key="FadeInStoryboard">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                     From="0" To="1"
+                     Duration="0:0:0.5" />
+        </Storyboard>
+
+    </Page.Resources>
+
     <!--<Page.Resources>
         <CollectionViewSource x:Name="cvs" x:Key="EndPointViewSource" Source="{Binding EndPointsPaged}">
 
@@ -28,6 +38,8 @@
 
         <ListBox 
                 ItemsSource="{Binding EndPointsPaged}" 
+                SelectedItem="{Binding SelectedEndpoint}"
+            
                 ap:SortHelper.PropertyName="Name"                
             
                 ItemTemplate="{StaticResource EndpointDataTemplate}"
@@ -40,14 +52,8 @@
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Opacity" Value="0" />
                     <Style.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                     From="0" To="1"
-                                                     Duration="0:0:0.5" />
-                                </Storyboard>
-                            </BeginStoryboard>
+                        <EventTrigger RoutedEvent="Loaded" >
+                            <BeginStoryboard Storyboard="{StaticResource FadeInStoryboard}" />
                         </EventTrigger>
                     </Style.Triggers>
                 </Style>

@@ -11,6 +11,7 @@ using System.Windows.Data;
 
 namespace WpfApp.AttachedProperties;
 
+
 public static class SortHelper 
 {
     public static readonly DependencyProperty PropertyNameProperty =

@@ -35,7 +35,9 @@ public class EndpointsViewModel : BaseViewModel
         }
     }
 
-    public List<Endpoint> EndPoints { get; set; }    
+    public List<Endpoint> EndPoints { get; set; }
+
+    public Endpoint SelectedEndpoint { get; set; }
 
     public List<Endpoint> EndPointsPaged => EndPoints.Skip(CurrentPage * PageSize).Take(PageSize).ToList();
 
@@ -43,6 +45,13 @@ public class EndpointsViewModel : BaseViewModel
 
     public RelayCommand NextPageCommand => new RelayCommand(NextPage);
     public RelayCommand PrevPageCommand => new RelayCommand(PrevPage);
+    public RelayCommand RemoveCommand => new RelayCommand(Remove);
+
+
+    public void Remove()
+    {
+        EndPoints.Remove(SelectedEndpoint);
+    }
 
     public EndpointsViewModel(IEndpointService service)
     {
