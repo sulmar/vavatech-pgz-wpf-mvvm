@@ -6,11 +6,15 @@
 
     <DataTemplate x:Key="EndpointDataTemplate" DataType="{x:Type m:Endpoint}">
         <StackPanel>
-            <ToggleButton Content="{Binding Name}" 
+            <ToggleButton
                           Style="{StaticResource EndpointToggleButtonStyle}"                                                   
                           IsChecked="{Binding Toggled}"
                           Template="{StaticResource RoundedToggleButtonTemplate}"
                           >
+
+                <ToggleButton.Content>
+                    <Image Width="48" Height="48" Source="/Assets/Images/Mic-03.png" />
+                </ToggleButton.Content>
 
                 <ToggleButton.ContextMenu>
                     <ContextMenu>
