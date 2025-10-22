@@ -1,8 +1,37 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
 namespace WpfApp.AttachedProperties;
+
+/*
+
+<UserControl x:Class="FadeOutDemo.MyItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid x:Name="Root" Background="LightBlue">
+        <TextBlock Text = "Element" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>
+
+
+public void FadeOutAndExecute(Action onComplete)
+{
+    var anim = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.5)));
+    anim.Completed += (s, e) => onComplete?.Invoke();
+    Root.BeginAnimation(UIElement.OpacityProperty, anim);
+}
+
+
+
+myItem.FadeOutAndRemove(() =>
+{
+    MyItems.Remove(myItem); // dopiero po zakończeniu animacji
+});
+
+*/
+
 
 public static class StoryboardHelper
 {

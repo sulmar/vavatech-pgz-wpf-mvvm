@@ -27,7 +27,9 @@
 
             </ToggleButton>
 
-            <Button Height="50" Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveCommand}" >Remove</Button>
+            <Button
+                Visibility="Collapsed"
+                Height="50" Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveCommand}" >Remove</Button>
         </StackPanel>
     </DataTemplate>
 
