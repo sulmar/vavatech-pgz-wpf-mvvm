@@ -39,25 +39,3 @@ public class FeatureFlagView : ContentControl
 
     }
 }
-
-
-public static class FeatureFlagService
-{
-    private static readonly Dictionary<string, bool> _flags = new()
-    {
-#if FEATURE_EXPORT
-        {"EXPORT", true},
-#else
-    {"EXPORT", false},
-#endif
-
-    };
-
-
-    public static bool IsEnabled(string feature)
-    {
-        return _flags.TryGetValue(feature, out bool flag) && flag;
-    }
-
-
-}

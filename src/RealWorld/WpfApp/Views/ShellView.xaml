@@ -13,7 +13,7 @@
 
 
     <Grid>
-           
+
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
 
@@ -23,12 +23,11 @@
                         <MenuItem Header="Sensors" Command="{Binding ShowSensorsCommand}"/>
                     </MenuItem>
                 </Menu>
-                
+
                 <Button Command="{Binding ShowMapCommand}" >Map</Button>
                 <Button Command="{Binding ShowSensorsCommand}">Sensors</Button>
                 <Button Command="{Binding ShowEndpointsCommand}">Endpoints</Button>
                 <Button Style="{StaticResource DangerButtonStyle}">Remove</Button>
-
 
                 <c:FeatureFlagView Feature="EXPORT">
                     <Button Content="Export">
@@ -42,7 +41,7 @@
                 </c:FeatureFlagView>
 
                 <TextBlock Text="{me:Hello Text='John Smith'}" />
-                
+
                 <Border Width="50" BorderBrush="Black" BorderThickness="1" Margin="5" >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseEnter">
@@ -64,7 +63,7 @@
 
         <ProgressBar Height="50" Width="150" Value="50" IsIndeterminate="True" Visibility="Hidden"  />
 
-        
+
 
 
     </Grid>
