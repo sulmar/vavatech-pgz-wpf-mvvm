@@ -26,12 +26,14 @@
 
     <Grid>
 
-        <ListBox
+        <ListBox 
                 ItemsSource="{Binding EndPointsPaged}" 
                 ap:SortHelper.PropertyName="Name"                
             
                 ItemTemplate="{StaticResource EndpointDataTemplate}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"                
+            
+                RenderTransformOrigin="0.5, 0.5"
             >
 
             <ListBox.ItemsPanel>
@@ -39,6 +41,10 @@
                     <WrapPanel />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
+
+            <ListBox.RenderTransform>
+                <RotateTransform Angle="0" />
+            </ListBox.RenderTransform>
 
         </ListBox>
 

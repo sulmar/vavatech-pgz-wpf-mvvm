@@ -32,5 +32,35 @@
         
         
     </ControlTemplate>
+
+
+    <ControlTemplate x:Key="RoundedToggleButtonTemplate" TargetType="ToggleButton">
+        <Border x:Name="border" CornerRadius="10"
+                
+                Width="{TemplateBinding Width}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                
+                RenderTransformOrigin="0.5,0.5"
+                >
+            
+            
+            <ContentPresenter
+                HorizontalAlignment="Center"  VerticalAlignment="Center" />
+
+            <Border.RenderTransform>
+                <ScaleTransform x:Name="scale" ScaleX="1" ScaleY="1" />
+            </Border.RenderTransform>
+            
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{StaticResource CheckedColorBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+        
+    </ControlTemplate>
     
 </ResourceDictionary>

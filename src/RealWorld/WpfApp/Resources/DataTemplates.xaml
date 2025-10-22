@@ -9,6 +9,7 @@
             <ToggleButton Content="{Binding Name}" 
                           Style="{StaticResource EndpointToggleButtonStyle}"                                                   
                           IsChecked="{Binding Toggled}"
+                          Template="{StaticResource RoundedToggleButtonTemplate}"
                           >
 
             </ToggleButton>

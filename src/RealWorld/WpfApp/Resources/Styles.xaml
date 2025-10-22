@@ -6,6 +6,8 @@
 
     <sys:Double x:Key="ButtonWidth">200</sys:Double>
 
+    <SolidColorBrush x:Key="CheckedColorBrush">Yellow</SolidColorBrush>
+
     <Style x:Key="DefaultButtonStyle" TargetType="Button">
         <Setter Property="Width" Value="{StaticResource ButtonWidth}" />
         <Setter Property="Height" Value="70" />

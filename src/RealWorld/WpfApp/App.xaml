@@ -12,8 +12,9 @@
 
                 <ResourceDictionary Source="/Resources/Colors.xaml" />
                 <ResourceDictionary Source="/Resources/Styles.xaml" />
-                <ResourceDictionary Source="/Resources/DataTemplates.xaml" />
                 <ResourceDictionary Source="/Resources/ControlTemplates.xaml" />
+                <ResourceDictionary Source="/Resources/DataTemplates.xaml" />
+                
 
             </ResourceDictionary.MergedDictionaries>
 
