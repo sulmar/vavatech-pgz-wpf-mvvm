@@ -10,11 +10,125 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MapSensorsView">
 
+    <Page.Resources>
+        <Storyboard x:Key="RotateAnimation" RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="rotationY"
+                             Storyboard.TargetProperty="Angle"
+                             From="0" To="360"
+                             Duration="0:0:5"
+                             RepeatBehavior="Forever" />
+        </Storyboard>
+    </Page.Resources>
+
     <Grid>
 
+        <!--<Grid.Triggers>
+            <EventTrigger RoutedEvent="Grid.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource RotateAnimation}" />
+            </EventTrigger>
+        </Grid.Triggers>-->
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition />
+            <ColumnDefinition />
+            
+        </Grid.ColumnDefinitions>
+
         <uc:MapSensors ItemsSource="{Binding Sensors}" />
-        
-        
+
+        <Viewport3D x:Name="viewport" Grid.Column="1" MouseDown="Viewport3D_MouseDown">
+
+
+            <!-- Camera -->
+            
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="3,3,5"
+                                   LookDirection="-3,-3,-5"
+                                   UpDirection="0,1,0"
+                                   FieldOfView="60"/>
+            </Viewport3D.Camera>
+
+
+            <!-- Light -->
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <DirectionalLight Color="White" Direction="-1,-1,-2"/>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+
+            <!-- Model 3D -->
+            
+            <ModelVisual3D>
+                                                
+
+                <ModelVisual3D.Content>
+
+                    <Model3DGroup>
+                        
+                        <!-- Ściana A -->
+                        <GeometryModel3D x:Name="WallA" >
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="-1,-1,1 1,-1,1 1,1,1 -1,1,1"
+                                                TriangleIndices="0 1 2 0 2 3"
+                                                />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Blue" />
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                        
+                        <!-- Ściana B -->
+                        <GeometryModel3D x:Name="WallB">
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="-1,-1,-1 -1,-1,1 1,1,-1 -1,1,-1"
+                                            TriangleIndices="0 1 2 0 2 3"
+                    />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Green" />
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                    </Model3DGroup>
+                    
+                    
+
+                    <!-- Geometria sześcianu -->
+                    
+                    <!--<GeometryModel3D>
+                        
+                        <GeometryModel3D.Geometry>
+                            <MeshGeometry3D
+                                Positions="-1,-1,1  1,-1,1  1,1,1  -1,1,1
+                                           -1,-1,-1  1,-1,-1  1,1,-1  -1,1,-1"
+                                TriangleIndices="0 1 2 0 2 3
+                                                 1 5 6 1 6 2
+                                                 5 4 7 5 7 6
+                                                 4 0 3 4 3 7
+                                                 3 2 6 3 6 7
+                                                 4 5 1 4 1 0"/>
+                        </GeometryModel3D.Geometry>
+
+
+                        <GeometryModel3D.Material>
+                            <DiffuseMaterial Brush="Blue" />
+                        </GeometryModel3D.Material>
+
+
+                        <GeometryModel3D.Transform>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D x:Name="rotationY" Axis="0,1,0" Angle="60"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                        </GeometryModel3D.Transform>
+                    </GeometryModel3D>-->
+                </ModelVisual3D.Content>
+                
+            </ModelVisual3D>
+            
+        </Viewport3D>
 
 
 
